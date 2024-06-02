@@ -10,6 +10,7 @@ import java.util.List;
 
 public class TFIDFCalculator{
     public static void main(String[] args) {
+        boolean curr_query_type = false; //AND
         String docs_path = args[0];
         String test_file = args[1];
         int[] docSizes = new int[60000];
@@ -189,4 +190,11 @@ class Trie {
         //System.out.println("is Not Null");
         return node.getCounter();
     }
+
+    public boolean cutQueryWord(String input_word){
+        boolean query_or = false; //is AND
+        //
+
+        return query_or;
+    } 
 }
