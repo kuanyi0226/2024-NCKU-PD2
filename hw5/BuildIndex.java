@@ -3,15 +3,16 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class BuildIndex{
-    Indexer idx;
-    BuildIndex(){
-        idx = new Indexer();
-        buildIndex();
-    }
-
-    private void buildIndex(){
+    public static void main(String[] args) {
+        String txtPath = args[0];
+        //build index
         try {
-            FileOutputStream fos = new FileOutputStream("example.ser");
+            Indexer idx = new Indexer(txtPath);
+            String fileName = txtPath.substring(txtPath.lastIndexOf('/') + 1);
+            fileName = fileName.substring(0, fileName.lastIndexOf('.'));
+            fileName = fileName + ".ser";
+
+            FileOutputStream fos = new FileOutputStream(fileName);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(idx);
             
@@ -19,7 +20,7 @@ public class BuildIndex{
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();	
-        }
+        }   
     }
-
 }
+
